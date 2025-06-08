@@ -1,0 +1,277 @@
+/*--------------------------------------------------------------
+1. Variables de color
+--------------------------------------------------------------*/
+:root {
+    --white:       #FFFFFF;
+    --black:       #000000;
+    --primary:     #BB7FC4;
+    --primary-alt: #554A4D;
+    --accent1:     #3ACED6;
+    --accent2:     #FFC3C3;
+    --bg-light:    #FFF4E8;
+    --text-dark:   #2D2D2D;
+    --text-light:  #6B6B6B;
+    --light-pink:  #FFC3C3;
+    --medium-pink: #FF6F6F;
+    --deep-red:    #641E1F;
+  }
+  
+  /*--------------------------------------------------------------
+  2. Reset y tipografía global
+  --------------------------------------------------------------*/
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  body {
+    font-family: 'Inter', sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+    background: var(--white);
+  }
+  .container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+  
+  /*--------------------------------------------------------------
+  3. Header y navegación (desktop)
+  --------------------------------------------------------------*/
+  .site-header {
+    padding: 1rem 0;
+  }
+  
+  .header__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .logo {
+    height: 2.5rem;
+  }
+  .site-nav {
+    display: flex;
+    position: static;
+    right: auto;
+    width: auto;
+    height: auto;
+    background: none;
+    box-shadow: none;
+    transition: none;
+    transition: right 0.3s ease, background 0.3s ease;
+  }
+  .nav__list {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+  }
+  .nav__list a {
+    text-decoration: none;
+    color: var(--text-dark);
+    font-weight: 500;
+  }
+  
+  /*--------------------------------------------------------------
+  4. Botones
+  --------------------------------------------------------------*/
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: var(--primary);
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+  }
+  .btn--outline {
+    background: transparent;
+    border: 2px solid var(--primary);
+    color: var(--text-dark);
+  }
+  
+  /*--------------------------------------------------------------
+  5. Secciones (hero, feature, info)
+  --------------------------------------------------------------*/
+  .hero,
+  .feature,
+  .info {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+    padding: 4rem 0;
+  }
+  .hero { background: var(--white); }
+  .feature { background: var(--bg-light); }
+  .info {
+    background: var(--accent1);
+    color: var(--white);
+  }
+  .hero h1,
+  .info h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  .feature h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  .hero p,
+  .feature p,
+  .info p {
+    margin-bottom: 1.5rem;
+    color: var(--text-light);
+  }
+  .hero__img img,
+  .feature__img img,
+  .info__img img {
+    width: 98%;
+    border-radius: 1rem;
+
+  }
+
+  
+  /*--------------------------------------------------------------
+  6. Footer e íconos
+  --------------------------------------------------------------*/
+
+
+  .heart-icon {
+    width: 1rem;
+    height: 1rem;
+    fill: #FFC3C3;
+    vertical-align: middle;
+    display: inline-block;
+    margin-left: 0.5rem;
+
+  }
+
+  footer {
+    background: #FF6F6F;
+    padding: 1rem 0;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .footer__inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .footer__text {
+    font-size: 0.9rem;
+    color: #641E1F;
+    font-weight: bold;
+  }
+
+
+
+
+
+  .social-icon {
+    width: 1.5rem;
+    margin-left: 1rem;
+    fill: #641E1F; 
+    transition: opacity 0.2s;
+  }
+
+/* Estilos para los íconos SVG del footer */
+.socials {
+  display: flex;
+  gap: 0.5rem;
+}
+
+  /*--------------------------------------------------------------
+  7. Menú hamburguesa (CSS-only)
+  --------------------------------------------------------------*/
+  /* Ocultar checkbox */
+  .nav-toggle {
+    display: none;
+  }
+  /* Ocultar label en desktop */
+  .nav-toggle-label {
+    display: none;
+    cursor: pointer;
+  }
+  .nav-toggle-label .icon {
+    width: 1.5rem;
+  }
+  .nav-toggle-label .close-icon {
+    display: none;
+  }
+  
+  /*--------------------------------------------------------------
+  8. Responsive (móvil)
+  --------------------------------------------------------------*/
+  @media (max-width: 768px) {
+    /* Mostrar botón hamburguesa */
+    .nav-toggle-label {
+      display: block;
+      z-index: 1001;
+    }
+    /* Menú off-canvas */
+    .site-nav {
+      display: block;
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 75%;
+      max-width: 300px;
+      height: 100vh;
+      background: var(--white);
+      box-shadow: -4px 0 8px rgba(0,0,0,0.1);
+      transition: right 0.3s ease;
+      padding: 2rem;
+      z-index: 1000;
+    }
+    /* Alternar iconos y menú */
+    .nav-toggle:checked + .nav-toggle-label .menu-icon {
+      display: none;
+    }
+    .nav-toggle:checked + .nav-toggle-label .close-icon {
+      display: inline;
+    }
+    .nav-toggle:checked + .nav-toggle-label + .site-nav {
+      right: 0;
+    }
+    /* Ajustes de layout */
+    .hero,
+    .feature,
+    .info {
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    .hero__img,
+    .feature__img,
+    .info__img {
+      order: -1;
+    }
+    .nav__list {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+  }
+  
+  /*--------------------------------------------------------------
+  9. Responsive (tipografía pequeña)
+  --------------------------------------------------------------*/
+  @media (max-width: 480px) {
+    .hero h1,
+    .feature h2,
+    .info h2 {
+      font-size: 2rem;
+    }
+    .hero p,
+    .feature p,
+    .info p {
+      font-size: 0.9rem;
+    }
+  }
+  
